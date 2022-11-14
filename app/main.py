@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from .routers import router
 import logging.config
+import instana
 
 logger = logging.getLogger("productService")
 
