@@ -1,9 +1,12 @@
 from fastapi import FastAPI
-from .routers import router
+from .routers import router, product_api
 import logging.config
 import instana
 
+import os
+
 logger = logging.getLogger("productService")
+os.environ['AUTOWRAPT_BOOTSTRAP'] = "Instana"
 
 # Set logger name to project
 
@@ -27,6 +30,8 @@ app = FastAPI(
 
 # Add routers to main
 app.include_router(router.router)
+app.include_router(product_api.router)
+
 
 # This path is for health check or test
 @app.get("/")
