@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 from app.repository import product_curd
-from app import models, schemas
+from app.schemas import schemas
 from app.repository.sql_session import SessionLocal, engine, Base
 from sqlalchemy.orm import Session
 
@@ -26,5 +26,4 @@ def get_products(skip: int = 0, limit: int = 100, db: Session = Depends(get_db))
 
 @router.post("/products/", tags=["products"], description="product")
 def create_user(product_schema: schemas.ProductBase, db: Session = Depends(get_db)):
-
     return product_curd.create_product(db=db, product=product_schema)
