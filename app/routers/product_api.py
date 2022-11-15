@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 from app.repository import product_curd
-from .. import models, schemas
+from app import models, schemas
 from app.repository.sql_session import SessionLocal, engine, Base
 from sqlalchemy.orm import Session
 
