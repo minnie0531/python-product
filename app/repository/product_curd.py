@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 
-from app.models import product
+from app.models.product import Product
 from app.schemas import schemas
 
 
@@ -13,7 +13,7 @@ def get_products(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_product(db: Session, product: schemas.ProductBase):
-    db_product = product.Product(product_id=product.product_id,
+    db_product = Product(product_id=product.product_id,
     product_name=product.product_name,
     product_price=product.product_price,
     product_quantity=product.product_quantity)
