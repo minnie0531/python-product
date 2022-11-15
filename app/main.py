@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .routers import router, product_api
+from app.routers import router, product_api
 import logging.config
 import instana
 
