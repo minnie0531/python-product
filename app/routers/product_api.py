@@ -20,10 +20,10 @@ def get_db():
     finally:
         db.close()
 
-@router.get("/products/", tags=["products"], description="product")
+@router.get("/products", tags=["products"], description="product")
 def get_products(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return product_curd.get_products(db,skip=skip, limit=limit)
 
-@router.post("/products/", tags=["products"], description="product")
+@router.post("/products", tags=["products"], description="product")
 def create_user(product_schema: schemas.ProductBase, db: Session = Depends(get_db)):
     return product_curd.create_product(db=db, product=product_schema)
