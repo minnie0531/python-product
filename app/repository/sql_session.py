@@ -6,7 +6,9 @@ import os
 username = os.environ['MYSQL_USER']
 password = os.environ['MYSQL_PW']
 
-engine = create_engine("mysql+pymysql://${username}:${password}@product-mysql/product")
+connectionString = 'mysql+pymysql://' + username + ":" + password + "@product-mysql:3306/product"
+
+engine = create_engine(connectionString)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
